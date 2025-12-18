@@ -9,7 +9,6 @@ CREATE TABLE IF NOT EXISTS ubs (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(150) NOT NULL,
     id_bairro INT,
-    
     CONSTRAINT fk_ubs_bairro FOREIGN KEY (id_bairro) REFERENCES bairro(id)
 );
 
@@ -18,8 +17,9 @@ CREATE TABLE IF NOT EXISTS populacao (
     qnt_masculina INT DEFAULT 0,
     qnt_feminina INT DEFAULT 0,
     id_bairro INT NOT NULL,
-    
-    CONSTRAINT fk_populacao_bairro FOREIGN KEY (id_bairro) REFERENCES bairro(id)
+    id_ubs INT NOT NULL,
+    CONSTRAINT fk_populacao_bairro FOREIGN KEY (id_bairro) REFERENCES bairro(id),
+    CONSTRAINT fk_populacao_ubs FOREIGN KEY (id_ubs) REFERENCES ubs(id)
 );
 
 CREATE TABLE IF NOT EXISTS perfil_educacional (
@@ -41,8 +41,9 @@ CREATE TABLE IF NOT EXISTS perfil_educacional (
     qnt_nenhum INT DEFAULT 0,
     qnt_nao_informado INT DEFAULT 0,
     id_bairro INT NOT NULL,
-    
-    CONSTRAINT fk_educacao_bairro FOREIGN KEY (id_bairro) REFERENCES bairro(id)
+    id_ubs INT NOT NULL,
+    CONSTRAINT fk_educacao_bairro FOREIGN KEY (id_bairro) REFERENCES bairro(id),
+    CONSTRAINT fk_educacao_ubs FOREIGN KEY (id_ubs) REFERENCES ubs(id)
 );
 
 CREATE TABLE IF NOT EXISTS renda_familiar (
@@ -56,8 +57,9 @@ CREATE TABLE IF NOT EXISTS renda_familiar (
     qnt_mais_4_salario INT DEFAULT 0,
     nao_informado INT DEFAULT 0,
     id_bairro INT NOT NULL,
-    
-    CONSTRAINT fk_renda_bairro FOREIGN KEY (id_bairro) REFERENCES bairro(id)
+    id_ubs INT NOT NULL,
+    CONSTRAINT fk_renda_bairro FOREIGN KEY (id_bairro) REFERENCES bairro(id),
+    CONSTRAINT fk_renda_ubs FOREIGN KEY (id_ubs) REFERENCES ubs(id)
 );
 
 CREATE TABLE IF NOT EXISTS abastecimento_agua (
@@ -69,8 +71,9 @@ CREATE TABLE IF NOT EXISTS abastecimento_agua (
     outro INT DEFAULT 0,
     nao_informado INT DEFAULT 0,
     id_bairro INT NOT NULL,
-    
-    CONSTRAINT fk_agua_bairro FOREIGN KEY (id_bairro) REFERENCES bairro(id)
+    id_ubs INT NOT NULL,
+    CONSTRAINT fk_agua_bairro FOREIGN KEY (id_bairro) REFERENCES bairro(id),
+    CONSTRAINT fk_agua_ubs FOREIGN KEY (id_ubs) REFERENCES ubs(id)
 );
 
 CREATE TABLE IF NOT EXISTS tratamento_agua (
@@ -82,8 +85,9 @@ CREATE TABLE IF NOT EXISTS tratamento_agua (
     qnt_sem_tratamento INT DEFAULT 0,
     qnt_nao_informado INT DEFAULT 0,
     id_bairro INT NOT NULL,
-    
-    CONSTRAINT fk_tratamento_bairro FOREIGN KEY (id_bairro) REFERENCES bairro(id)
+    id_ubs INT NOT NULL,
+    CONSTRAINT fk_tratamento_bairro FOREIGN KEY (id_bairro) REFERENCES bairro(id),
+    CONSTRAINT fk_tratamento_ubs FOREIGN KEY (id_ubs) REFERENCES ubs(id)
 );
 
 CREATE TABLE IF NOT EXISTS destino_lixo (
@@ -94,8 +98,9 @@ CREATE TABLE IF NOT EXISTS destino_lixo (
     qnt_outra_forma INT DEFAULT 0,
     qnt_nao_informado INT DEFAULT 0,
     id_bairro INT NOT NULL,
-    
-    CONSTRAINT fk_lixo_bairro FOREIGN KEY (id_bairro) REFERENCES bairro(id)
+    id_ubs INT NOT NULL,
+    CONSTRAINT fk_lixo_bairro FOREIGN KEY (id_bairro) REFERENCES bairro(id),
+    CONSTRAINT fk_lixo_ubs FOREIGN KEY (id_ubs) REFERENCES ubs(id)
 );
 
 CREATE TABLE IF NOT EXISTS escoamento_banheiro (
@@ -107,6 +112,7 @@ CREATE TABLE IF NOT EXISTS escoamento_banheiro (
     qnt_outra_forma INT DEFAULT 0,
     qnt_nao_informado INT DEFAULT 0,
     id_bairro INT NOT NULL,
-    
-    CONSTRAINT fk_banheiro_bairro FOREIGN KEY (id_bairro) REFERENCES bairro(id)
+    id_ubs INT NOT NULL,
+    CONSTRAINT fk_banheiro_bairro FOREIGN KEY (id_bairro) REFERENCES bairro(id),
+    CONSTRAINT fk_banheiro_ubs FOREIGN KEY (id_ubs) REFERENCES ubs(id)
 );
