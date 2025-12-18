@@ -89,6 +89,6 @@ def processamento_etl(caminho_csv):
                 {"masc": row[62], "fem": row[63], "id_b": bairro_id, "id_u": ubs_id}
             )
 
-    print("Dados carregados com sucesso vinculando Bairro e UBS.")
+    print("Dados carregados com sucesso.")
 
 processamento_etl('dados.csv')
